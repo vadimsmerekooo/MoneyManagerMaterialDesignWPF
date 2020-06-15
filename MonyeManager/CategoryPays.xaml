@@ -1,0 +1,116 @@
+﻿<Page x:Class="MonyeManager.CategoryPays"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MonyeManager"
+      xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300">
+
+    <Grid>
+        <ItemsControl x:Name="ItemsControlPays" Margin="10 10 10 0" ItemsSource="{Binding Pays}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Vertical"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <md:Card x:Name="Card"
+                                     Margin="0 5"
+                                     Padding="8"
+                                     Height="100"
+                                     Background="White"
+                                     UniformCornerRadius="6"
+                                     md:ShadowAssist.ShadowDepth="Depth2">
+                        <Grid Width="{Binding ElementName=Card, Path=Width}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="65"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition Height="15"/>
+                            </Grid.RowDefinitions>
+                            <md:PackIcon Kind="{Binding Kind}" 
+                                 ToolTip="{Binding ToolTip}"
+                                 Height="45" 
+                                 Width="45"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center"/>
+                            <Grid Grid.Column="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding Name}" 
+                                                           Foreground="DarkGray"
+                                                           FontSize="15"
+                                                           FontWeight="Bold"
+                                                           VerticalAlignment="Center" 
+                                                           HorizontalAlignment="Left"/>
+                                    <TextBlock Text="{Binding CountPay}"
+                                                           Foreground="DarkGray"
+                                                           FontSize="15"
+                                                           VerticalAlignment="Center" 
+                                                           HorizontalAlignment="Left"/>
+                                </StackPanel>
+                                <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Right">
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+                                        <TextBlock Text="{Binding PaysMoney}" 
+                                                           Foreground="DarkGray"
+                                                           FontSize="15"
+                                                           FontWeight="Bold"
+                                                           VerticalAlignment="Center" 
+                                                           HorizontalAlignment="Left"/>
+                                        <TextBlock Text="$"
+                                                           Foreground="DarkGray"
+                                                           FontSize="15"
+                                                           FontWeight="DemiBold"
+                                                           VerticalAlignment="Center" 
+                                                           HorizontalAlignment="Left"/>
+                                        <TextBlock Text="/" Margin="5 0"
+                                                           Foreground="DarkGray"
+                                                           FontSize="15"
+                                                           FontWeight="DemiBold"
+                                                           VerticalAlignment="Center" 
+                                                           HorizontalAlignment="Left"/>
+                                        <TextBlock Text="{Binding MaxPay}"
+                                                           Foreground="#683CD6"
+                                                           FontSize="15"
+                                                           FontWeight="DemiBold"
+                                                           VerticalAlignment="Center" 
+                                                           HorizontalAlignment="Left"/>
+                                        <TextBlock Text="$"
+                                                           Foreground="#683CD6"
+                                                           FontSize="15"
+                                                           FontWeight="DemiBold"
+                                                           VerticalAlignment="Center" 
+                                                           HorizontalAlignment="Left"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+                                        <TextBlock Text="{Binding Progress}"
+                                                           Foreground="DarkGray"
+                                                           FontSize="15"
+                                                           VerticalAlignment="Center" 
+                                                           HorizontalAlignment="Right"/>
+                                        <TextBlock Text="% потрачено"
+                                                           Foreground="DarkGray"
+                                                           FontSize="15"
+                                                           VerticalAlignment="Center" 
+                                                           HorizontalAlignment="Right"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Grid>
+                            <Border Grid.Column="1" Grid.Row="2">
+                                <ProgressBar Value="{Binding Progress}"/>
+                            </Border>
+                        </Grid>
+                    </md:Card>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </Grid>
+</Page>
